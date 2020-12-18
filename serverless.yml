@@ -31,5 +31,5 @@ package:
 functions:
   updater:
     handler: handler.hello
-    # events:
-    #   - schedule: rate(10 minutes)
+    events:
+      - schedule: rate(1 day)
