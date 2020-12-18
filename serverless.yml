@@ -14,6 +14,7 @@
 service: zerotier-auto-dns
 
 plugins:
+  - serverless-plugin-typescript
   - serverless-dotenv-plugin
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
