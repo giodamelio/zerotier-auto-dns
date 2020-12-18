@@ -1,0 +1,12 @@
+{
+  "name": "zerotier-auto-dns",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A lambda function that automatically updates dns for a zerotiers networks members",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gio d'Amelio",
+  "license": "MIT"
+}
