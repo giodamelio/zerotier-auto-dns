@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "preserveConstEnums": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "outDir": ".build",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es2019",
+    "lib": ["es2019"],
+    "rootDir": "./"
+  }
+}
