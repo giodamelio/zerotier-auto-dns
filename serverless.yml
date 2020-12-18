@@ -12,6 +12,9 @@
 # Happy Coding!
 
 service: zerotier-auto-dns
+
+plugins:
+  - serverless-dotenv-plugin
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
 #org: your-org-name
@@ -44,6 +47,7 @@ provider:
 #            - "Ref" : "ServerlessDeploymentBucket"
 #            - "/*"
 
+useDotenv: true
 # you can define service wide environment variables here
 #  environment:
 #    variable1: value1
