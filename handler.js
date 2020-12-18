@@ -1,18 +1,31 @@
 'use strict';
 
-module.exports.hello = async event => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: 'Go Serverless v1.0! Your function executed successfully!',
-        input: event,
-      },
-      null,
-      2
-    ),
-  };
+const fetch = require('node-fetch');
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
+async function zerotierRequest(path, options = {}) {
+  const request = await fetch(
+    `https://my.zerotier.com/${path}`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.ZEROTIER_TOKEN}`
+      },
+      ...options
+    }
+  );
+
+  return await request.json();
+}
+
+module.exports.hello = async event => {
+  // Get info from the ZeroTier API
+  const members = await zerotierRequest(`/api/network/${process.env.ZEROTIER_NETWORK_ID}/member`);
+  members.forEach(m => {
+    console.log(m);
+  });
+
+
+  return {
+    message: `Success. ${members.length} network members found`,
+    event
+  };
 };
