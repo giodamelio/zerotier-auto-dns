@@ -64,11 +64,13 @@ module.exports.hello = async (event: ScheduledEvent) => {
   };
 
   console.log(`About to update ${changeBatch.ChangeBatch.Changes.length} member records`);
+  changeBatch.ChangeBatch.Changes.forEach(change => {
+    console.log(`    ${change.ResourceRecordSet.Name} = ${change.ResourceRecordSet?.ResourceRecords?.map(({ Value }) => Value).join(', ')}`);
+  });
 
   // Update the records
   const changeRequest = await route53.changeResourceRecordSets(changeBatch).promise();
-
-  console.log(`Changes "${changeRequest.ChangeInfo.Comment}" status = ${changeRequest.ChangeInfo.Status}`);
+  console.log(`Changes "${changeRequest.ChangeInfo.Comment}" request sent`);
 
   return {
     message: `Success. ${changeBatch.ChangeBatch.Changes.length} records requested to be updated`,
